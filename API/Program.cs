@@ -21,6 +21,7 @@ app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
 
 app.UseStaticFiles();
+app.UseCors("CorsPolicy");
 app.UseAuthorization();
 
 app.MapControllers();

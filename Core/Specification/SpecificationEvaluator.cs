@@ -17,6 +17,17 @@ namespace Core.Specification
             if(specs.WhereCriteria!=null){
                 query=query.Where(specs.WhereCriteria);
             }
+            if(specs.OrderBy!=null){
+                query=query.OrderBy(specs.OrderBy);
+            }
+            if(specs.OrderByDescending!=null){
+                query=query.OrderByDescending(specs.OrderByDescending);
+            }
+
+            if(specs.IsPagingEnabled){
+                query=query.Skip(specs.Skip).Take(specs.Take);
+            }
+
             query=specs.Includes.Aggregate(query,(current,include)=>current.Include(include));
 
             return query;
